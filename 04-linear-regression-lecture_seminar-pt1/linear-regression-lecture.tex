@@ -9,9 +9,9 @@
 \usepackage{subcaption}
 \usepackage{amsmath, amssymb}
 
-\title{Лекция 2: Линейные модели}
+\title{Занятие 4: Линейные модели}
 \subtitle{Линейная регрессия}
-\date{13 февраля 2021}
+\date{1 октября 2022}
 
 \begin{document}
 
@@ -27,7 +27,7 @@
 \end{frame}
 
 \begin{frame}{Как формализовывать задачу?}
-    \includegraphics[width=\linewidth]{graphs/fig1.png}
+    \includegraphics[width=\linewidth]{graphs/fig1.jpg}
 \end{frame}
 
 \begin{frame}{Формализация задачи}
@@ -62,10 +62,10 @@
             \begin{itemize}
                 \item Вы физик-инженер, у вас на столе лежит кусок неизвестного гибкого материала,
                 который вы хотите использовать в своем устройстве
-                \pause{}
+                \pause
                 \item Однако, вы не знаете его коэффициента растяжения, и не можете рассчитать
                 возникающие силы
-                \pause{}
+                \pause
                 \item Вы хотите построить зависимость силы упругости от растяжения для этого
                 материала (и узнать коэффициент растяжения)
             \end{itemize}
@@ -123,10 +123,10 @@
 \begin{frame}{Модель}
     Благодаря Роберту Гуку вы знаете, что сила упругости зависит от растяжения линейно:
     {\LARGE \[ F = k x \]}
-    \pause{}
+    \pause
     Общий вид линейной функции одной переменной:
     {\LARGE \[ y(x) = w_1 x + w_0 \]}
-    \pause{}
+    \pause
     Таким образом, ваша задача среди всех таких функций (семейства) найти ту конкретную,
     которая лучше всего вам подходит (определить параметры)
 \end{frame}
@@ -147,11 +147,9 @@
 \end{frame}
 
 \begin{frame}{Формализация задачи}
-    \begin{figure}
-        \centering
-        \includegraphics[width=.54\linewidth]{graphs/fig4.png}
-        \caption*{Какая из функций лучше?}
-    \end{figure}
+    \centering
+    \includegraphics[width=.54\linewidth]{graphs/fig4.png} \\
+    Какая из функций лучше?
 \end{frame}
 
 \begin{frame}{Формализация задачи}
@@ -168,7 +166,7 @@
     Функционал ошибки --- функция \( \mathcal{L}(y, \hat{y}) \), значение
     которой показывает, насколько хороши предсказания модели относительно
     правильных ответов.
-    \pause{}
+    \pause
 
     Наиболее популярные для задачи регрессии:
     {\large
@@ -206,7 +204,7 @@
     функция давала наименьшее значение MSE, то есть
     {\Large
         \[ \frac{1}{n} \sum_{i=1}^n {(y_i - \hat{y_i})}^2 \rightarrow \min_{w_0, w_1} \]
-        \pause{}
+        \pause
         \[ \frac{1}{n} \sum_{i=1}^n {(y_i - w_1 x_i - w_0 )}^2 \rightarrow \min_{w_0, w_1} \]
     }
     Как это сделать?
@@ -228,17 +226,17 @@
         \frac{d}{dw_0} \frac{1}{n} \sum_{i=1}^n {(y_i - w_1 x_i - w_0)}^2 =
         \frac{d}{dw_0} \sum_{i=1}^n {(y_i - w_1 x_i - w_0)}^2 =
     \]
-    \pause{}
+    \pause
     \[
         = \sum_{i=1}^n \frac{d}{dw_0} {(y_i - w_1 x_i - w_0)}^2 =
         \sum_{i=1}^n 2 {(y_i - w_1 x_i - w_0)(-1)} = 0
     \]
-    \pause{}
+    \pause
     \[
         \Rightarrow \sum_{i=1}^n (y_i - w_1 x_i - w_0) =
         \sum_{i=1}^n y_i - w_1 \sum_{i=1}^n x_i - n w_0 = 0
     \]
-    \pause{}
+    \pause
     \[
         \Rightarrow n w_0 = \sum_{i=1}^n y_i - w_1 \sum_{i=1}^n x_i
     \]
@@ -247,16 +245,16 @@
 \begin{frame}{Метод обучения: (не)много матана}
     \large
     \[ \frac{d}{dw_1} \frac{1}{n} \sum_{i=1}^n {(y_i - w_1 x_i - w_0)}^2 = \]
-    \pause{}
+    \pause
     \[
         = \sum_{i=1}^n \frac{d}{dw_1} {(y_i - w_1 x_i - w_0)}^2 =
         \sum_{i=1}^n 2 {(y_i - w_1 x_i - w_0)(-x_i)} = 0
     \]
-    \pause{}
+    \pause
     \[
         \Rightarrow \sum_{i=1}^n x_i {(y_i - w_1 x_i - w_0)} = 0 
     \]
-    \pause{}
+    \pause
     \[
         \Rightarrow w_1 \sum_{i=1}^n x_i^2 = \sum_{i=1}^n x_i y_i -
         w_0 \sum_{i=1}^n x_i   
@@ -306,16 +304,16 @@
     \[ \vec{x} = {(x_1, x_2, \ldots, x_d)} \]
 
     Как будет выглядеть линейная модель в данном случае?
-    \pause{}
+    \pause
     \[ f(\vec{x}) = f(x_1, x_2, \ldots) = \]
-    \pause{}
+    \pause
     \[ = w_0 + w_1 x_1 + w_2 x_2 + \cdots + w_d x_d = w_0 + \sum_{j=1}^d w_j x_j \]
 \end{frame}
 
 \begin{frame}{Bias trick}
     \LARGE
     \[ w_0 + \sum_{j=1}^d w_j x_j = \pause{} w_0 + \langle \vec{w}, \vec{x} \rangle = \]
-    \pause{}
+    \pause
     \[ = \langle \vec{w}, \vec{x} \rangle + w_0 \cdot 1 = \langle \vec{w'}, \vec{x'} \rangle \]
     \[ \vec{x'} = (1, x_1, x_2, \dots, x_d) \quad \vec{w'} = (w_0, w_1, \dots, w_d) \]
 \end{frame}
@@ -338,13 +336,19 @@
 \begin{frame}{Аналитическое решение}
     \LARGE
     \[ \frac{1}{N} \| X \vec{w} - \vec{y} \|^2 \rightarrow \min_{\vec{w}} \]
-    \pause{}
+    \pause
     \[ \frac{d}{d \vec{w}} \| X \vec{w} - \vec{y} \|^2 = 0 \]
-    \pause{}
+    \pause
     \[
         \vec{w}^* = \underset{\vec{w}}{\arg\min} \| X \vec{w} - \vec{y} \|^2
         = {(X^T X)}^{-1} X^T \vec{y}
     \]
+\end{frame}
+
+\begin{frame}{Ссылка на семинар}
+    \centering
+    \LARGE
+    https://bit.ly/3SyoQ9h
 \end{frame}
 
 \end{document}
