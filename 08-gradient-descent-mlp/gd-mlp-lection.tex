@@ -9,8 +9,8 @@
 \usepackage{subcaption}
 \usepackage{amsmath, amssymb}
 
-\title{Лекция 4: Градиентный спуск и искусственные нейроны}
-\date{20 марта 2021}
+\title{Занятие 9: Градиентный спуск и искусственные нейроны}
+\date{19 ноября 2022}
 
 \begin{document}
 \maketitle
@@ -71,16 +71,16 @@
     \large{\[ \vec{w}^* = {(X^T X)}^{-1} X^T y \]}
     \begin{itemize}
         \item Может ли быть так, что формула выше неприменима?
-        \pause{}
+        \pause
         \item Может ли быть так, что никакой формулы нет?
-        \pause{}
+        \pause
         \item Что в таком случае делать?
-        \pause{}
+        \pause
         \item Наивный вариант: перебор по сетке
         \item \(n = 100, m = 12 \rightarrow N_{ops} = 100^{12} = 10^{24}\)
-        \pause{}
-        \item Численные итеративные алгоритмы
     \end{itemize}
+    \pause
+    В таких случаях математика обращается к итеративным алгоритмам численной оптимизации.
 \end{frame}
 
 \begin{frame}{Градиентный спуск}
@@ -88,7 +88,7 @@
 	\includegraphics[width=.7\linewidth]{graphs/fig4.jpg}
 \end{frame}
 
-\begin{frame}{Метод обучения: градиентный спуск}
+\begin{frame}{Градиентный спуск как метод оптимизации}
 		\begin{columns}
 			\begin{column}{.35\linewidth}
                 Итеративный алгоритм:
