@@ -1,6 +1,0 @@
-dill
-numpy
-Pillow
-streamlit
-streamlit-drawable-canvas
-tqdm
